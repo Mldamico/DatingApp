@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NavComponent } from './nav/nav.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
