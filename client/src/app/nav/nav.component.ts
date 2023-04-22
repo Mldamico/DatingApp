@@ -8,7 +8,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  loggedIn = false;
+  loggedIn: boolean = false;
   constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {}
@@ -21,5 +21,9 @@ export class NavComponent implements OnInit {
       },
       error: (error) => console.log(error),
     });
+  }
+
+  logout() {
+    this.loggedIn = false;
   }
 }
