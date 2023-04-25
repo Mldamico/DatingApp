@@ -11,9 +11,11 @@ namespace API.DTOs
 
         public string UserName { get; set; }
 
+        public string PhotoUrl { get; set; }
+
         public int Age { get; set; }
 
-        public string KnowAs { get; set; }
+        public string KnownAs { get; set; }
         public DateTime created { get; set; }
         public DateTime LastActive { get; set; }
         public string Gender { get; set; }
@@ -22,6 +24,6 @@ namespace API.DTOs
         public string Interests { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public List<PhotoDto> Photos { get; set; } = new();
+        public List<PhotoDto> Photos { get; set; }
     }
 }
