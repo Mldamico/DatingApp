@@ -6,9 +6,9 @@ namespace API.Middleware
 {
     public class ExceptionMiddleware
     {
-        private readonly RequestDelegate next;
-        private readonly ILogger<ExceptionMiddleware> logger;
-        private readonly IHostEnvironment env;
+        private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionMiddleware> _logger;
+        private readonly IHostEnvironment _env;
 
         public ExceptionMiddleware(
             RequestDelegate next,
@@ -16,24 +16,24 @@ namespace API.Middleware
             IHostEnvironment env
         )
         {
-            this.next = next;
-            this.logger = logger;
-            this.env = env;
+            _env = env;
+            _logger = logger;
+            _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                await this.next(context);
+                await _next(context);
             }
             catch (Exception ex)
             {
-                this.logger.LogError(ex, ex.Message);
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                _logger.LogError(ex, ex.Message);
+                // context.Response.ContentType = "application/json";
+                // context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                var response = this.env.IsDevelopment()
+                var response = _env.IsDevelopment()
                     ? new ApiException(
                         context.Response.StatusCode,
                         ex.Message,
@@ -44,10 +44,12 @@ namespace API.Middleware
                         ex.Message,
                         "Internal Server Error"
                     );
+
                 var options = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 };
+
                 var json = JsonSerializer.Serialize(response, options);
 
                 await context.Response.WriteAsync(json);
