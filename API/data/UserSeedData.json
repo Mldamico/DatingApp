@@ -13,8 +13,8 @@
     "Country": "India",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/women/16.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/women/16.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -32,8 +32,8 @@
     "Country": "Georgia",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/women/52.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/women/52.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -51,8 +51,8 @@
     "Country": "Falkland Islands (Malvinas)",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/women/87.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/women/87.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -70,8 +70,8 @@
     "Country": "Cape Verde",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/women/83.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/women/83.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -89,8 +89,8 @@
     "Country": "Suriname",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/women/71.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/women/71.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -108,8 +108,8 @@
     "Country": "Angola",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/men/32.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/men/32.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -127,8 +127,8 @@
     "Country": "Bouvet Island",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/men/80.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/men/80.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -146,8 +146,8 @@
     "Country": "Ethiopia",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/men/16.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/men/16.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -165,8 +165,8 @@
     "Country": "Bermuda",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/men/22.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/men/22.jpg",
+        "IsMain": true
       }
     ]
   },
@@ -184,8 +184,8 @@
     "Country": "Belarus",
     "Photos": [
       {
-        "url": "https://randomuser.me/api/portraits/men/92.jpg",
-        "isMain": true
+        "Url": "https://randomuser.me/api/portraits/men/92.jpg",
+        "IsMain": true
       }
     ]
   }
