@@ -27,10 +27,7 @@
       *ngIf="accountService.currentUser$ | async as user"
       dropdown
     >
-      <a
-        href="#"
-        class="dropdown-toggle text-light text-decoration-none"
-        dropdownToggle
+      <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle
         >Welcome {{ user.username | titlecase }}</a
       >
       <div class="dropdown-menu mt-3" *dropdownMenu>
