@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { User } from '../_models/user';
 import { environment } from '../../environments/environment';
+import { MembersService } from './members.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
         const user = response;
+
         if (user) {
           this.setCurrentUser(user);
         }
