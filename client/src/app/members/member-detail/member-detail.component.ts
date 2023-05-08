@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   NgxGalleryAnimation,
   NgxGalleryImage,
@@ -30,15 +30,17 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   user?: User;
   constructor(
     private accountService: AccountService,
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
     private messageService: MessageService,
-    public presenceService: PresenceService
+    public presenceService: PresenceService,
+    private router: Router
   ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: (user) => {
         if (user) this.user = user;
       },
     });
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
   ngOnDestroy(): void {
     this.messageService.stopHubConnection();
@@ -46,10 +48,10 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // this.loadMember();
-    this.router.data.subscribe({
+    this.route.data.subscribe({
       next: (data) => (this.member = data['member']),
     });
-    this.router.queryParams.subscribe({
+    this.route.queryParams.subscribe({
       next: (params) => {
         params['tab'] && this.selectTab(params['tab']);
       },

@@ -6,6 +6,7 @@ import { Message } from '../_models/Message';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { User } from '../_models/user';
 import { BehaviorSubject, take } from 'rxjs';
+import { Group } from '../_models/group';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,23 @@ export class MessageService {
     });
 
     this.hubConnection.on('ReceiveMessageThread', (messages) => {
+      console.log(messages);
       this.messageThreadSource.next(messages);
+    });
+
+    this.hubConnection.on('UpdatedGroup', (group: Group) => {
+      if (group.connections.some((x) => x.username === otherUsername)) {
+        this.messageThread$.pipe(take(1)).subscribe({
+          next: (messages) => {
+            messages.forEach((message) => {
+              if (!message.dateRead) {
+                message.dateRead = new Date(Date.now());
+              }
+            });
+            this.messageThreadSource.next([...messages]);
+          },
+        });
+      }
     });
 
     this.hubConnection.on('NewMessage', (message) => {
@@ -66,14 +83,8 @@ export class MessageService {
 
   async sendMessage(username: string, content: string) {
     return this.hubConnection
-      ?.invoke('SendMessage', {
-        recipientUsername: username,
-        content,
-      })
-      .catch((err) => {
-        console.log('Something went wrong');
-        console.log(err);
-      });
+      ?.invoke('SendMessage', { recipientUsername: username, content })
+      .catch((error) => console.log(error));
   }
 
   deleteMessage(id: number) {
