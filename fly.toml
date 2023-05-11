@@ -1,0 +1,21 @@
+# fly.toml app configuration file generated for wild-cherry-2580 on 2023-05-10T17:37:49-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "wild-cherry-2580"
+primary_region = "eze"
+
+[build]
+  image = "arecyus/datingapp:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  CloudinarySettings__CloudName="arecyus"
+  CloudinarySettings__ApiKey="859891146771898"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true

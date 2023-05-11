@@ -19,7 +19,7 @@ namespace API.Interfaces
             string recipientUserName
         );
 
-        Task<bool> SaveAllAsync();
+        // Task<bool> SaveAllAsync();
         void AddGroup(Group group);
         void RemoveConnection(Connection connection);
         Task<Connection> GetConnection(string connectionId);

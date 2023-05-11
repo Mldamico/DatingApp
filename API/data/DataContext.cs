@@ -1,4 +1,5 @@
 using API.Entities;
+using AutoMapper.Configuration;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace API.data
         // public DbSet<AppUser> Users { get; set; }
 
         public DbSet<UserLike> Likes { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
 
         public DbSet<Message> Messages { get; set; }
 
@@ -74,6 +77,8 @@ namespace API.data
                 .HasOne(u => u.Sender)
                 .WithMany(m => m.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Photo>().HasQueryFilter(p => p.IsApproved);
         }
     }
 }
