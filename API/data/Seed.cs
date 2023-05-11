@@ -9,6 +9,12 @@ namespace API.data
 {
     public class Seed
     {
+        public static async Task ClearConnections(DataContext context)
+        {
+            context.Connections.RemoveRange(context.Connections);
+            await context.SaveChangesAsync();
+        }
+
         public static async Task SeedUsers(
             UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager
@@ -40,6 +46,8 @@ namespace API.data
                 // using var hmac = new HMACSHA512();
                 user.Photos.First().IsApproved = true;
                 user.UserName = user.UserName.ToLower();
+                user.created = DateTime.SpecifyKind(user.created, DateTimeKind.Utc);
+                user.LastActive = DateTime.SpecifyKind(user.LastActive, DateTimeKind.Utc);
                 // user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Pa$$w0rd"));
                 // user.PasswordSalt = hmac.Key;
                 await userManager.CreateAsync(user, "Pa$$w0rd");
